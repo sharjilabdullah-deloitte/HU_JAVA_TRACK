@@ -11,10 +11,10 @@ public class ReversingString {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the size you want to enter  + 1");
-        int n =sc.nextInt();
+        int size =sc.nextInt();
 
-        String [] arr = new String[n];
-        for(int i=0;i<arr.length;i++)
+        String [] arr = new String[size];
+        for(int i=0;i<size;i++)
         {
             //System.out.println("Enter the element ");
             arr[i] = sc.nextLine();
@@ -22,7 +22,7 @@ public class ReversingString {
 
         ArrayList<String> a = new ArrayList<>();
 
-        for(int i=0;i<arr.length;i++)
+        for(int i=0;i<size;i++)
         {
             a.add(arr[i]);
         }
