@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 
 public class FileHandler {
     public static void main(String[] args) {
-      
+
         try
         {
             List<List<String>> data = new ArrayList<>();//list of lists to store data
