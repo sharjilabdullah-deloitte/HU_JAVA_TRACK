@@ -110,27 +110,37 @@ public class HRHelper {
                                         System.out.println("******Welcome to the user database*****");
                                         System.out.println("Enter the userid");
                                         nuid= sc.nextInt();
+                                        ResultSet resultSet1=statement.executeQuery("INSERT INTO employee (id) VALUES ( "+nuid+")");
                                         System.out.println("Enter the name");
                                         nname=sc.next();
+                                        ResultSet resultSet2=statement.executeQuery("INSERT INTO employee (name) VALUES ( "+nname+")");
                                         System.out.println("Enter the age");
                                         nage=sc.nextInt();
                                         if(nage<18 || nage >90)
                                             System.out.println("Enter the correct age between 18 to 90");
+                                        ResultSet resultSet3=statement.executeQuery("INSERT INTO employee (age) VALUES ( "+nage+")");
                                         System.out.println("Enter the company name");
                                         ncname=sc.next();
+                                        ResultSet resultSet4=statement.executeQuery("INSERT INTO employee (company-name) VALUES ( "+ncname+")");
                                         System.out.println("Enter the designation");
                                         ndesig=sc.next();
+                                        ResultSet resultSet5=statement.executeQuery("INSERT INTO employee (designation) VALUES ( "+ndesig+")");
                                         System.out.println("Enter the salary");
                                         nsalary=sc.nextInt();
                                         if (nsalary<=0)
                                             System.out.println("Enter the salary greater than 0");
+                                        ResultSet resultSet6=statement.executeQuery("INSERT INTO employee (salary) VALUES ( "+nsalary+")");
                                         System.out.println("Enter the address");
                                         nadd=sc.next();
+                                        ResultSet resultSet7=statement.executeQuery("INSERT INTO employee (address) VALUES ( "+nadd+")");
                                         System.out.println("Enter the phone number");
                                         nphone=sc.nextInt();
                                         int lengthOfphone= String.valueOf(nphone).length();
                                         if(lengthOfphone<10 || lengthOfphone>10)
                                             System.out.println("Please enter the correct 10 digit length of your phone number");
+                                        ResultSet resultSet8=statement.executeQuery("INSERT INTO employee (phone) VALUES ( "+nphone+")");
+                                    case 2:
+
 
                                 }
 
