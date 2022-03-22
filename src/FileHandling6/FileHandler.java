@@ -8,7 +8,7 @@ import java.util.Scanner;
 import java.util.logging.Logger;
 
 public class FileHandler {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
 
         try
         {
