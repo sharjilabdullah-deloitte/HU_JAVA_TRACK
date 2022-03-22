@@ -93,6 +93,48 @@ public class HRHelper {
                             int id = resultSet.getInt("id");
                             if ((enteredid == id) && (enteredpass.equals(pass))) {
                                 System.out.println("Login Sucessful");
+
+                                System.out.println("*****Welcome to the user database*********");
+                                System.out.println("1. Add User data");
+                                System.out.println("2. List User data");
+                                System.out.println("3. Update User data");
+                                System.out.println("4. Delete user data");
+                                System.out.println("5. Exit");
+
+                                int ch1 =sc.nextInt();
+                                int nuid,nsalary,nphone,nage;
+                                String nname,ncname,ndesig,nadd;
+                                switch (ch)
+                                {
+                                    case 1:
+                                        System.out.println("******Welcome to the user database*****");
+                                        System.out.println("Enter the userid");
+                                        nuid= sc.nextInt();
+                                        System.out.println("Enter the name");
+                                        nname=sc.next();
+                                        System.out.println("Enter the age");
+                                        nage=sc.nextInt();
+                                        if(nage<18 || nage >90)
+                                            System.out.println("Enter the correct age between 18 to 90");
+                                        System.out.println("Enter the company name");
+                                        ncname=sc.next();
+                                        System.out.println("Enter the designation");
+                                        ndesig=sc.next();
+                                        System.out.println("Enter the salary");
+                                        nsalary=sc.nextInt();
+                                        if (nsalary<=0)
+                                            System.out.println("Enter the salary greater than 0");
+                                        System.out.println("Enter the address");
+                                        nadd=sc.next();
+                                        System.out.println("Enter the phone number");
+                                        nphone=sc.nextInt();
+                                        int lengthOfphone= String.valueOf(nphone).length();
+                                        if(lengthOfphone<10 || lengthOfphone>10)
+                                            System.out.println("Please enter the correct 10 digit length of your phone number");
+
+                                }
+
+
                             } else {
                                 System.out.println("Please enter correct Userid or Password");
                             }
@@ -109,7 +151,7 @@ public class HRHelper {
                     try {
                         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/emp_records", "root", "password");
                         Statement statement= connection.createStatement();
-                        String query1="INSERT INTO employee(password)" +
+                        String query1="INSERT INTO employee(id)" +
                                 "VALUES "+(id2)+" ";
 
                     }
@@ -125,6 +167,8 @@ public class HRHelper {
                             checkPassword(pass2);
                             String query1="INSERT INTO employee(password)" +
                                     "VALUES (pass2)";
+
+
                         }
                         catch (pdException e){
                             e.printStackTrace();
