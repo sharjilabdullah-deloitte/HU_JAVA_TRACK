@@ -87,15 +87,15 @@ public class HRHelper {
                     try {
                         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/emp_records", "root", "password");
                         Statement statement= connection.createStatement();
-                        ResultSet resultSet = statement.executeQuery("Select * from employee");
-                        resultSet.next();
-                        String pass= resultSet.getString("password");
-                        int id=resultSet.getInt("id");
-                        if (enteredid==id && enteredpass.equals(pass)){
-                            System.out.println("Login Sucessful");
-                        }
-                        else{
-                            System.out.println("Please enter correct Userid or Password");
+                        ResultSet resultSet = statement.executeQuery("Select * from employee WHERE id = ' "+ enteredid +" ' ");
+                        while(resultSet.next()) {
+                            String pass = resultSet.getString("password");
+                            int id = resultSet.getInt("id");
+                            if ((enteredid == id) && (enteredpass.equals(pass))) {
+                                System.out.println("Login Sucessful");
+                            } else {
+                                System.out.println("Please enter correct Userid or Password");
+                            }
                         }
                     }
                     catch (Exception e){
@@ -106,6 +106,16 @@ public class HRHelper {
                     System.out.println("*****WELCOME TO THE USER REGISTRATION PAGE******");
                     System.out.println("Enter the userid");
                     id2=sc.nextInt();
+                    try {
+                        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/emp_records", "root", "password");
+                        Statement statement= connection.createStatement();
+                        String query1="INSERT INTO employee(password)" +
+                                "VALUES "+(id2)+" ";
+
+                    }
+                    catch (Exception e){
+                        e.printStackTrace();
+                    }
                     System.out.println("Enter the password");
                     pass2=sc.next();
                     System.out.println("Please reenter your password");
@@ -113,6 +123,8 @@ public class HRHelper {
                     if(pass2==pass3) {
                         try {
                             checkPassword(pass2);
+                            String query1="INSERT INTO employee(password)" +
+                                    "VALUES (pass2)";
                         }
                         catch (pdException e){
                             e.printStackTrace();
