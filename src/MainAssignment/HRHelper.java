@@ -76,19 +76,18 @@ public class HRHelper {
             System.out.println("2.REGISTER");
             System.out.println("Enter your choice :");
             int ch=sc.nextInt();
-            switch (ch)
-            {
-                case 1 :
+            switch (ch) {
+                case 1:
                     System.out.println("*******WELCOME TO LOGIN PAGE**********");
                     System.out.println("Enter the User id");
-                    enteredid=sc.nextInt();
+                    enteredid = sc.nextInt();
                     System.out.println("Enter your Password");
-                    enteredpass= sc.next();
+                    enteredpass = sc.next();
                     try {
                         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/emp_records", "root", "password");
-                        Statement statement= connection.createStatement();
-                        ResultSet resultSet = statement.executeQuery("Select * from employee WHERE id = ' "+ enteredid +" ' ");
-                        while(resultSet.next()) {
+                        Statement statement = connection.createStatement();
+                        ResultSet resultSet = statement.executeQuery("Select * from employee WHERE id = ' " + enteredid + " ' ");
+                        while (resultSet.next()) {
                             String pass = resultSet.getString("password");
                             int id = resultSet.getInt("id");
                             if ((enteredid == id) && (enteredpass.equals(pass))) {
@@ -101,46 +100,59 @@ public class HRHelper {
                                 System.out.println("4. Delete user data");
                                 System.out.println("5. Exit");
 
-                                int ch1 =sc.nextInt();
-                                int nuid,nsalary,nphone,nage;
-                                String nname,ncname,ndesig,nadd;
-                                switch (ch)
-                                {
+                                int ch1 = sc.nextInt();
+                                int nuid, nsalary, nphone, nage;
+                                String nname, ncname, ndesig, nadd;
+                                switch (ch) {
                                     case 1:
                                         System.out.println("******Welcome to the user database*****");
                                         System.out.println("Enter the userid");
-                                        nuid= sc.nextInt();
-                                        ResultSet resultSet1=statement.executeQuery("INSERT INTO employee (id) VALUES ( "+nuid+")");
+                                        nuid = sc.nextInt();
+                                        ResultSet resultSet1 = statement.executeQuery("INSERT INTO employee (id) VALUES ( " + nuid + ")");
                                         System.out.println("Enter the name");
-                                        nname=sc.next();
-                                        ResultSet resultSet2=statement.executeQuery("INSERT INTO employee (name) VALUES ( "+nname+")");
+                                        nname = sc.next();
+                                        ResultSet resultSet2 = statement.executeQuery("INSERT INTO employee (name) VALUES ( " + nname + ")");
                                         System.out.println("Enter the age");
-                                        nage=sc.nextInt();
-                                        if(nage<18 || nage >90)
+                                        nage = sc.nextInt();
+                                        if (nage < 18 || nage > 90)
                                             System.out.println("Enter the correct age between 18 to 90");
-                                        ResultSet resultSet3=statement.executeQuery("INSERT INTO employee (age) VALUES ( "+nage+")");
+                                        ResultSet resultSet3 = statement.executeQuery("INSERT INTO employee (age) VALUES ( " + nage + ")");
                                         System.out.println("Enter the company name");
-                                        ncname=sc.next();
-                                        ResultSet resultSet4=statement.executeQuery("INSERT INTO employee (company-name) VALUES ( "+ncname+")");
+                                        ncname = sc.next();
+                                        ResultSet resultSet4 = statement.executeQuery("INSERT INTO employee (company-name) VALUES ( " + ncname + ")");
                                         System.out.println("Enter the designation");
-                                        ndesig=sc.next();
-                                        ResultSet resultSet5=statement.executeQuery("INSERT INTO employee (designation) VALUES ( "+ndesig+")");
+                                        ndesig = sc.next();
+                                        ResultSet resultSet5 = statement.executeQuery("INSERT INTO employee (designation) VALUES ( " + ndesig + ")");
                                         System.out.println("Enter the salary");
-                                        nsalary=sc.nextInt();
-                                        if (nsalary<=0)
+                                        nsalary = sc.nextInt();
+                                        if (nsalary <= 0)
                                             System.out.println("Enter the salary greater than 0");
-                                        ResultSet resultSet6=statement.executeQuery("INSERT INTO employee (salary) VALUES ( "+nsalary+")");
+                                        ResultSet resultSet6 = statement.executeQuery("INSERT INTO employee (salary) VALUES ( " + nsalary + ")");
                                         System.out.println("Enter the address");
-                                        nadd=sc.next();
-                                        ResultSet resultSet7=statement.executeQuery("INSERT INTO employee (address) VALUES ( "+nadd+")");
+                                        nadd = sc.next();
+                                        ResultSet resultSet7 = statement.executeQuery("INSERT INTO employee (address) VALUES ( " + nadd + ")");
                                         System.out.println("Enter the phone number");
-                                        nphone=sc.nextInt();
-                                        int lengthOfphone= String.valueOf(nphone).length();
-                                        if(lengthOfphone<10 || lengthOfphone>10)
+                                        nphone = sc.nextInt();
+                                        int lengthOfphone = String.valueOf(nphone).length();
+                                        if (lengthOfphone < 10 || lengthOfphone > 10)
                                             System.out.println("Please enter the correct 10 digit length of your phone number");
-                                        ResultSet resultSet8=statement.executeQuery("INSERT INTO employee (phone) VALUES ( "+nphone+")");
-                                    case 2:
+                                        ResultSet resultSet8 = statement.executeQuery("INSERT INTO employee (phone) VALUES ( " + nphone + ")");
 
+
+                                    case 2:
+                                        System.out.println("Listing all the user data");
+                                        ResultSet listing = statement.executeQuery("SELECT * FROM employee ");
+
+                                    case 3:
+                                        System.out.println("Select the field which you want to upadate");
+                                        System.out.println("1. Name");
+                                        System.out.println("2. Age");
+                                        System.out.println("3. Company name");
+                                        System.out.println("4. Designation");
+                                        System.out.println("5. Salary");
+                                        System.out.println("6. Address");
+                                        System.out.println("7. Phone number");
+                                        int updatechoice=sc.nextInt();
 
                                 }
 
@@ -149,49 +161,38 @@ public class HRHelper {
                                 System.out.println("Please enter correct Userid or Password");
                             }
                         }
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
 
-                case 2 :
+                case 2:
                     System.out.println("*****WELCOME TO THE USER REGISTRATION PAGE******");
                     System.out.println("Enter the userid");
-                    id2=sc.nextInt();
+                    id2 = sc.nextInt();
                     try {
                         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/emp_records", "root", "password");
-                        Statement statement= connection.createStatement();
-                        String query1="INSERT INTO employee(id)" +
-                                "VALUES "+(id2)+" ";
+                        Statement statement = connection.createStatement();
+                        String query1 = "INSERT INTO employee (id) VALUES (" + (id2) + " )";
 
-                    }
-                    catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     System.out.println("Enter the password");
-                    pass2=sc.next();
+                    pass2 = sc.next();
                     System.out.println("Please reenter your password");
-                    pass3=sc.next();
-                    if(pass2==pass3) {
+                    pass3 = sc.next();
+                    if (pass2 == pass3) {
                         try {
                             checkPassword(pass2);
-                            String query1="INSERT INTO employee(password)" +
-                                    "VALUES (pass2)";
+                            String query1 = "INSERT INTO employee (password) VALUES ( " + pass2 + ")";
 
 
-                        }
-                        catch (pdException e){
+                        } catch (pdException e) {
                             e.printStackTrace();
                         }
                     }
-
-
-
-
             }
-
-
-
-
     }
+
+
 }
